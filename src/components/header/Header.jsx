@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from '../container/Container';
 import {Logo , LogoutBtn} from '../index'
 
 const Header = () => {
 
-    const islogin = useSelector((state) => state.auth.status)
+    const authStatus = useSelector((state) => state.auth.status)
+    const navigate = useNavigate()
 
 
     const navItems =[
@@ -18,22 +19,22 @@ const Header = () => {
         {
             name: "Login",
             slug: "/login",
-            active: !islogin,
+            active: !authStatus,
         },
         {
             name: "Signup",
             slug: "/signup",
-            active: !islogin,
+            active: !authStatus,
         },
         {
             name: "All posts",
             slug: "/all-posts",
-            active: islogin,
+            active: authStatus,
         },
         {
             name: "Add post",
-            slug: "/add-posts",
-            active: islogin,
+            slug: "/add-post",
+            active: authStatus,
         }
     ]
 
@@ -54,7 +55,7 @@ const Header = () => {
                                 <li key={navItem.name}>
                                     <button 
                                     className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                                    onClick={() => Navigate(navItem.slug)} >
+                                    onClick={() => navigate(navItem.slug)} >
                                         {navItem.name}
                                     </button>
 
@@ -63,12 +64,12 @@ const Header = () => {
                         )}
                     </ul>
 
-                    (!islogin && (
+                    {!authStatus && (
                         <li>
                             <LogoutBtn/>
                         </li>
                         
-                    ))
+                    )}
             </div>
         </nav>
         </Container>

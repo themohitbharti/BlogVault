@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import service from '../../appwrite/conf';
-import { useState } from 'react';
+import { useState , useCallback} from 'react';
+import {Input,RTE, Select,Button} from '../index'
 
 export default function PostForm({post}){
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData)
-    const {register,handleSubmit, watch, control,setValue,getvalues } = useForm({
+    const {register,handleSubmit, watch, control,setValue,getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
             slug: post?.$id || '',

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import authService from "../appwrite/auth";
 import { login as authLogin } from "../store/authSlice";
 import {Input , Button} from "./index"
+import {Logo} from "./index";
 
 function Login() {
   const [error, setError] = useState(null);
