@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+button, [type='button'], [type='submit'], [type='reset'], [role='button'] {
+    cursor: pointer;
+  }
+  
+  input[type='file']::-webkit-file-upload-button {
+    cursor: pointer;
+  }

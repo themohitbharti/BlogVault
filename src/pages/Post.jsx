@@ -1,13 +1,18 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams ,Link} from 'react-router-dom';
 import service from '../appwrite/conf';
+import { useState ,useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import parse from "html-react-parser";
+import { Button,Container } from '../components';
 
 export default function Post(){
     const [post,setPost] = useState(null)
     const {slug} = useParams()
     const navigate = useNavigate()
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
     const userData = useSelector((state) => state.auth.userData);
+    const isAuthor = post && userData ? post.userId === userData.$id : false;
+    
 
     useEffect(() => {
         if (slug) {

@@ -8,7 +8,7 @@ import {Input,RTE, Select,Button} from '../index'
 
 export default function PostForm({post}){
     const navigate = useNavigate();
-    const userData = useSelector((state) => state.auth.userData)
+    const userData = useSelector((state) => state.auth.userData);
     const {register,handleSubmit, watch, control,setValue,getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
@@ -18,35 +18,75 @@ export default function PostForm({post}){
         }
     })
 
-    const submit = async(data) => {
-        if(post){
-            const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
+    console.log(userData)
 
-            if(file){
-                service.deleteFile(post.featuredImage)
-            }
-            const dbPost = await appwriteService.updatePost(post.$id, {
-                ...data,
-                featuredImage: file ? file.$id : undefined,
-            });
+    // const submit = async(data) => {
+    //     if(post){
+    //         const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
 
-            if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
-            }
+    //         if(file){
+    //             service.deleteFile(post.featuredImage)
+    //         }
+    //         const dbPost = await service.updatePost(post.$id, {
+    //             ...data,
+    //             featuredImage: file ? file.$id : undefined,
+    //         });
+
+    //         if (dbPost) {
+    //             navigate(`/post/${dbPost.$id}`);
+    //         }
 
 
-        }else{
-            const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
+    //     }else{
+    //         const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
 
-            if(file){
-                data.featuredImage = file.$id;
-                const dbPost = await service.createPost({...data, userId:userData.$id})
+    //         if(file){
+    //             data.featuredImage = file.$id;
+    //             const dbPost = await service.createPost({...data, userId: userData.$id})
+    //             if (dbPost) {
+    //                 navigate(`/post/${dbPost.$id}`);
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    const submit = async (data) => {
+        try {
+            if (post) {
+                const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
+    
+                if (file) {
+                    service.deleteFile(post.featuredImage);
+                }
+    
+                const dbPost = await service.updatePost(post.$id, {
+                    ...data,
+                    featuredImage: file ? file.$id : undefined,
+                });
+    
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
+
+            } else {
+                const file = await service.uploadFile(data.image[0]);
+    
+                if (file) {
+                    const fileId = file.$id;
+                    data.featuredImage = fileId;
+                    const dbPost = await service.createPost({ ...data, userId: userData.$id });
+    
+                    if (dbPost) {
+                        navigate(`/post/${dbPost.$id}`);
+                    }
+    
+                }
             }
+        } catch (error) {
+            console.error("Submission error:", error);
         }
-    }
+    };
 
 
     const slugTransform = useCallback((value) => {

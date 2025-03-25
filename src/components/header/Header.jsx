@@ -37,38 +37,36 @@ const Header = () => {
   ];
 
   return (
-    <header className="py-3 shadow bg-gray-500">
+    <header className='py-3 shadow bg-gray-500'>
       <Container>
-        <nav className="flex">
-          <div className="mr-4">
-            <Link to="/">
-              <Logo />
-            </Link>
-          </div>
+        <nav className='flex'>
+          <div className='mr-4'>
+            <Link to='/'>
+              <Logo width='70px'   />
 
-            <ul className="flex ml-auto">
-              {navItems.map((navItem) =>
-                navItem.active ? (
-                  <li key={navItem.name}>
-                    <button
-                      className="inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
-                      onClick={() => navigate(navItem.slug)}
-                    >
-                      {navItem.name}
-                    </button>
-                  </li>
-                ) : null
-              )}
-              {authStatus && (
-                <li>
-                  <LogoutBtn />
-                </li>
-              )}
-            </ul>
+              </Link>
+          </div>
+          <ul className='flex ml-auto'>
+            {navItems.map((item) => 
+            item.active ? (
+              <li key={item.name}>
+                <button
+                onClick={() => navigate(item.slug)}
+                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                >{item.name}</button>
+              </li>
+            ) : null
+            )}
+            {authStatus && (
+              <li>
+                <LogoutBtn />
+              </li>
+            )}
+          </ul>
         </nav>
-      </Container>
+        </Container>
     </header>
-  );
+  )
 };
 
 export default Header;
