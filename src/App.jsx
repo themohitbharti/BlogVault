@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 import { useEffect } from "react";
 import { login, logout } from "./store/authSlice";
 import authService from "./appwrite/auth";
