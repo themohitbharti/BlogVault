@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import service from '../../appwrite/conf';
-import { useState , useCallback} from 'react';
+import { useCallback} from 'react';
 import {Input,RTE, Select,Button} from '../index'
 
 export default function PostForm({post}){
@@ -19,37 +19,6 @@ export default function PostForm({post}){
     })
 
     console.log(userData)
-
-    // const submit = async(data) => {
-    //     if(post){
-    //         const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
-
-    //         if(file){
-    //             service.deleteFile(post.featuredImage)
-    //         }
-    //         const dbPost = await service.updatePost(post.$id, {
-    //             ...data,
-    //             featuredImage: file ? file.$id : undefined,
-    //         });
-
-    //         if (dbPost) {
-    //             navigate(`/post/${dbPost.$id}`);
-    //         }
-
-
-    //     }else{
-    //         const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
-
-    //         if(file){
-    //             data.featuredImage = file.$id;
-    //             const dbPost = await service.createPost({...data, userId: userData.$id})
-    //             if (dbPost) {
-    //                 navigate(`/post/${dbPost.$id}`);
-    //             }
-    //         }
-    //     }
-    // }
-
 
     const submit = async (data) => {
         try {
