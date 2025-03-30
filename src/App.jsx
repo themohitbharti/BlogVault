@@ -23,7 +23,7 @@ function App() {
         }
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [dispatch]);
 
   return !isLoading ? (
     <>

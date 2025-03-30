@@ -1,12 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Container from "../container/Container";
 import { Logo, LogoutBtn } from "../index";
 
 const Header = () => {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     {
@@ -56,7 +57,11 @@ const Header = () => {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="inline-block px-6 py-2 duration-200 bg-[#a52c35] hover:bg-[#e85254] rounded-full mx-1 text-[#fabbbf]"
+                    className={`inline-block px-6 py-2 duration-200 ${
+                      location.pathname === item.slug
+                        ? "bg-[#e85254] font-bold border-b-2 border-[#fabbbf]"
+                        : "bg-[#a52c35] hover:bg-[#e85254]"
+                    } rounded-full mx-1 text-[#fabbbf]`}
                   >
                     {item.name}
                   </button>
