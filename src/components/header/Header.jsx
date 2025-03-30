@@ -37,25 +37,31 @@ const Header = () => {
   ];
 
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className="py-3 shadow" style={{ backgroundColor: "#5e1e2c" }}>
       <Container>
-        <nav className='flex'>
-          <div className='mr-4'>
-            <Link to='/'>
-              <Logo width='70px'   />
-
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="mr-4">
+              <Link to="/">
+                <Logo width="90px" />
               </Link>
+            </div>
+            <div className="text-[#e85254] text-3xl font-bold ml-auto">
+              BlogVault
+            </div>
           </div>
-          <ul className='flex ml-auto'>
-            {navItems.map((item) => 
-            item.active ? (
-              <li key={item.name}>
-                <button
-                onClick={() => navigate(item.slug)}
-                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                >{item.name}</button>
-              </li>
-            ) : null
+          <ul className="flex">
+            {navItems.map((item) =>
+              item.active ? (
+                <li key={item.name}>
+                  <button
+                    onClick={() => navigate(item.slug)}
+                    className="inline-block px-6 py-2 duration-200 bg-[#a52c35] hover:bg-[#e85254] rounded-full mx-1 text-[#fabbbf]"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ) : null
             )}
             {authStatus && (
               <li>
@@ -64,9 +70,9 @@ const Header = () => {
             )}
           </ul>
         </nav>
-        </Container>
+      </Container>
     </header>
-  )
+  );
 };
 
 export default Header;

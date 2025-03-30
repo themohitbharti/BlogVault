@@ -1,8 +1,11 @@
 import React from 'react'
+import BlogVaultImg from '../assets/Blogvault.jpeg'
 
 function Logo({width = '100px'}) {
   return (
-    <div>Logo</div>
+    <div>
+      <img src={BlogVaultImg} alt="blogLogo" width={width} />
+    </div>
   )
 }
 
