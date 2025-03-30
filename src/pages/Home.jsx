@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import service from "../appwrite/conf";
 import { Container, PostCard } from "../components/index";
 
 function Home() {
+  const authStatus = useSelector((state) => state.auth.status);
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     service.getPosts().then((posts) => {
@@ -13,6 +16,7 @@ function Home() {
         setPosts(posts.documents);
         setFilteredPosts(posts.documents);
       }
+      setLoading(false);
     });
   }, []);
 
@@ -76,14 +80,81 @@ function Home() {
       {/* Blog Posts Section */}
       <div className="w-full py-12 bg-rose-50">
         <Container>
-          {filteredPosts.length === 0 && (
-            <div className="text-center py-10">
-              <h2 className="text-2xl font-bold text-gray-700">
-                No posts found matching your search
-              </h2>
+          {/* Not Authenticated State */}
+          {!authStatus && !loading && (
+            <div className="text-center py-16">
+              <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-100 to-rose-100 p-10 rounded-2xl shadow-lg">
+                <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-rose-500">
+                  Join the BlogVault Community!
+                </h2>
+                <p className="text-xl text-gray-700 mb-8">
+                  Log in to discover amazing stories and connect with passionate
+                  writers.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <a
+                    href="/login"
+                    className="inline-block bg-gradient-to-r from-red-500 to-rose-400 hover:from-red-600 hover:to-rose-500 text-white font-bold py-3 px-8 rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  >
+                    Log In
+                  </a>
+                  <a
+                    href="/signup"
+                    className="inline-block bg-transparent border-2 border-red-500 text-red-500 hover:bg-red-50 font-bold py-3 px-8 rounded-full transform transition-all duration-300 hover:scale-105"
+                  >
+                    Create Account
+                  </a>
+                </div>
+              </div>
             </div>
           )}
 
+          {/* No Search Results State */}
+          {authStatus &&
+            filteredPosts.length === 0 &&
+            searchTerm.trim() !== "" && (
+              <div className="text-center py-16">
+                <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
+                  <h2 className="text-3xl font-bold mb-4 text-gray-700">
+                    No posts found matching "{searchTerm}"
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-6">
+                    Try adjusting your search or explore other topics instead.
+                  </p>
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-full transition-colors"
+                  >
+                    Clear Search
+                  </button>
+                </div>
+              </div>
+            )}
+
+          {/* No Posts Yet State (for authenticated users) */}
+          {authStatus &&
+            posts.length === 0 &&
+            searchTerm.trim() === "" &&
+            !loading && (
+              <div className="text-center py-16">
+                <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
+                  <h2 className="text-3xl font-bold mb-4 text-gray-700">
+                    No posts available yet
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-6">
+                    Be the first to share your thoughts with the community!
+                  </p>
+                  <a
+                    href="/add-post"
+                    className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-full transition-colors"
+                  >
+                    Create a Post
+                  </a>
+                </div>
+              </div>
+            )}
+
+          {/* Posts Display */}
           {filteredPosts.length > 0 && (
             <>
               {/* Fancy section header */}
