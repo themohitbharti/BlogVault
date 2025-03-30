@@ -74,7 +74,7 @@ function Home() {
       </div>
 
       {/* Blog Posts Section */}
-      <div className="w-full py-12 bg-rose-75">
+      <div className="w-full py-12 bg-rose-50">
         <Container>
           {filteredPosts.length === 0 && (
             <div className="text-center py-10">
