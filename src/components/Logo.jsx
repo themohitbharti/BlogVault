@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogVaultImg from '../assets/Blogvault.jpeg'
+import BlogVaultImg from '../assets/BlogVault.jpeg'
 
 function Logo({width = '100px'}) {
   return (
