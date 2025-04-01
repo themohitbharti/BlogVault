@@ -47,7 +47,7 @@ const Header = () => {
                 <Logo width="90px" />
               </Link>
             </div>
-            <div className="text-[#e85254] text-3xl font-bold ml-auto">
+            <div className="hidden md:block text-[#e85254] text-3xl font-bold ml-auto">
               BlogVault
             </div>
           </div>
