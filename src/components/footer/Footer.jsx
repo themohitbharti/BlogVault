@@ -5,7 +5,7 @@ import { Logo } from "../index";
 const Footer = () => {
   return (
     <section
-      className="relative overflow-hidden py-10 border border-t-2 border-t-[#fabbbf]"
+      className="relative overflow-hidden border border-t-2 border-t-[#fabbbf] py-10"
       style={{ backgroundColor: "#5e1e2c" }}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="flex h-full flex-col justify-between">
               <div className="mb-4 inline-flex items-center">
                 <Logo width="90px" />
-                <span className="text-[#e85254] text-2xl font-bold ml-3">
+                <span className="ml-3 text-2xl font-bold text-[#e85254]">
                   BlogVault
                 </span>
               </div>
@@ -27,13 +27,13 @@ const Footer = () => {
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-2/12">
             <div className="h-full">
-              <h3 className="tracking-px mb-5 text-sm font-semibold uppercase text-[#e85254]">
+              <h3 className="tracking-px mb-5 text-sm font-semibold text-[#e85254] uppercase">
                 Company
               </h3>
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Features
@@ -41,7 +41,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Pricing
@@ -49,7 +49,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Affiliate Program
@@ -57,7 +57,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Press Kit
@@ -68,13 +68,13 @@ const Footer = () => {
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-2/12">
             <div className="h-full">
-              <h3 className="tracking-px mb-5 text-sm font-semibold uppercase text-[#e85254]">
+              <h3 className="tracking-px mb-5 text-sm font-semibold text-[#e85254] uppercase">
                 Support
               </h3>
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Account
@@ -82,7 +82,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Help
@@ -90,7 +90,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Contact Us
@@ -98,7 +98,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Customer Support
@@ -109,13 +109,13 @@ const Footer = () => {
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-3/12">
             <div className="h-full">
-              <h3 className="tracking-px mb-5 text-sm font-semibold uppercase text-[#e85254]">
+              <h3 className="tracking-px mb-5 text-sm font-semibold text-[#e85254] uppercase">
                 Legals
               </h3>
               <ul>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Terms &amp; Conditions
@@ -123,7 +123,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Privacy Policy
@@ -131,7 +131,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-base font-medium text-[#fabbbf] hover:text-white transition duration-200"
+                    className="text-base font-medium text-[#fabbbf] transition duration-200 hover:text-white"
                     to="/"
                   >
                     Licensing

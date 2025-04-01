@@ -18,14 +18,14 @@ function AllPosts() {
   const filteredPosts = posts.filter(
     (post) =>
       post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.$id?.toLowerCase().includes(searchQuery.toLowerCase())
+      post.$id?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
-    <div className="w-full py-8 bg-rose-50 min-h-screen">
+    <div className="min-h-screen w-full bg-rose-50 py-8">
       <Container>
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-center mb-4">All Blogs</h1>
+          <h1 className="mb-4 text-center text-3xl font-bold">All Blogs</h1>
           <div className="flex justify-center">
             <div className="relative w-full max-w-xl">
               <input
@@ -33,10 +33,10 @@ function AllPosts() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles..."
-                className="w-full px-4 py-3 rounded-lg border-2 border-rose-300 focus:ring-2 focus:ring-red-600 focus:outline-none bg-white"
+                className="w-full rounded-lg border-2 border-rose-300 bg-white px-4 py-3 focus:ring-2 focus:ring-red-600 focus:outline-none"
               />
               <svg
-                className="absolute right-3 top-3 h-5 w-5 text-gray-400"
+                className="absolute top-3 right-3 h-5 w-5 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -57,18 +57,18 @@ function AllPosts() {
             {filteredPosts.map((post) => (
               <div
                 key={post.$id}
-                className="p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full p-2 transition-transform duration-300 hover:scale-[1.02] sm:w-1/2 md:w-1/3 lg:w-1/4"
               >
                 <PostCard {...post} />
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-10 bg-white rounded-lg shadow">
+          <div className="rounded-lg bg-white py-10 text-center shadow">
             <h2 className="text-xl text-gray-600">
               No posts found matching your search
             </h2>
-            <p className="text-gray-500 mt-2">
+            <p className="mt-2 text-gray-500">
               Try adjusting your search terms
             </p>
           </div>

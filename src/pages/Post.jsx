@@ -38,24 +38,24 @@ export default function Post() {
     <div className="py-8">
       <Container>
         {loading ? (
-          <div className="min-h-[60vh] flex items-center justify-center">
+          <div className="flex min-h-[60vh] items-center justify-center">
             <div className="flex flex-col items-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-600 mb-4"></div>
-              <p className="text-amber-600 font-medium">Loading post...</p>
+              <div className="mb-4 h-12 w-12 animate-spin rounded-full border-t-2 border-b-2 border-amber-600"></div>
+              <p className="font-medium text-amber-600">Loading post...</p>
             </div>
           </div>
         ) : post ? (
-          <div className="flex flex-col md:flex-row gap-6">
+          <div className="flex flex-col gap-6 md:flex-row">
             {/* Image container - full width on mobile, 45% on larger screens */}
-            <div className="w-full md:w-5/12 relative border rounded-xl p-2 mb-4 md:mb-0">
+            <div className="relative mb-4 w-full rounded-xl border p-2 md:mb-0 md:w-5/12">
               <img
                 src={service.getFilePreview(post.featuredImage)}
                 alt={post.title}
-                className="rounded-xl w-full h-auto object-cover"
+                className="h-auto w-full rounded-xl object-cover"
               />
 
               {isAuthor && (
-                <div className="absolute right-4 top-4 flex flex-col sm:flex-row gap-2">
+                <div className="absolute top-4 right-4 flex flex-col gap-2 sm:flex-row">
                   <Link to={`/edit-post/${post.$id}`}>
                     <Button bgColor="bg-green-500" className="w-full sm:w-auto">
                       Edit
@@ -74,26 +74,26 @@ export default function Post() {
 
             {/* Content container - full width on mobile, 55% on larger screens */}
             <div className="w-full md:w-7/12">
-              <div className="bg-[#fffdf6] rounded-lg shadow-md p-6 border-l-4 border-amber-600 relative overflow-hidden h-full">
+              <div className="relative h-full overflow-hidden rounded-lg border-l-4 border-amber-600 bg-[#fffdf6] p-6 shadow-md">
                 {/* Decorative paper clip */}
-                <div className="absolute -top-1 right-8 w-6 h-12 bg-gray-400 rounded-b-full transform rotate-6 opacity-60 z-10"></div>
+                <div className="absolute -top-1 right-8 z-10 h-12 w-6 rotate-6 transform rounded-b-full bg-gray-400 opacity-60"></div>
 
                 {/* Title section with notebook styling */}
-                <div className="mb-8 relative">
-                  <h1 className="text-3xl md:text-4xl font-handwriting text-gray-800 mb-2 leading-snug">
+                <div className="relative mb-8">
+                  <h1 className="font-handwriting mb-2 text-3xl leading-snug text-gray-800 md:text-4xl">
                     {post.title}
                   </h1>
-                  <div className="text-sm font-mono text-amber-700 mt-2 italic">
+                  <div className="mt-2 font-mono text-sm text-amber-700 italic">
                     Published on{" "}
                     {new Date(post.$createdAt).toLocaleDateString()}
                   </div>
                   {/* Decorative line */}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-amber-200 to-amber-50"></div>
+                  <div className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-amber-200 to-amber-50"></div>
                 </div>
 
                 {/* Content area with notebook paper styling */}
                 <div
-                  className="browser-css prose max-w-none font-notepad leading-relaxed text-gray-700"
+                  className="browser-css prose font-notepad max-w-none leading-relaxed text-gray-700"
                   style={{
                     backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, #e5e7eb 31px, #e5e7eb 32px)`,
                     backgroundSize: "100% 32px",
@@ -105,10 +105,10 @@ export default function Post() {
                 </div>
 
                 {/* Torn paper effect at bottom */}
-                <div className="h-4 w-full bg-[#fffdf6] mt-6 relative">
-                  <div className="absolute bottom-0 left-0 w-full h-4 overflow-hidden">
+                <div className="relative mt-6 h-4 w-full bg-[#fffdf6]">
+                  <div className="absolute bottom-0 left-0 h-4 w-full overflow-hidden">
                     <div
-                      className="w-full h-8 bg-[#fffdf6]"
+                      className="h-8 w-full bg-[#fffdf6]"
                       style={{
                         maskImage:
                           "radial-gradient(12px at 8px 100%, transparent 0, transparent 6px, black 6px)",
@@ -122,7 +122,7 @@ export default function Post() {
             </div>
           </div>
         ) : (
-          <div className="min-h-[60vh] flex items-center justify-center">
+          <div className="flex min-h-[60vh] items-center justify-center">
             <p className="text-gray-500">Post not found</p>
           </div>
         )}

@@ -14,18 +14,18 @@ import AuthLayout from "./AuthLayout";
 import Select from "./Select";
 
 export {
-    Logo,
-    LogoutBtn,
-    Footer,
-    Header,
-    Input,
-    Login,
-    PostCard,
-    Button,
-    Signup,
-    RTE,
-    Container,
-    PostForm,
-    AuthLayout,
-    Select
-}
+  Logo,
+  LogoutBtn,
+  Footer,
+  Header,
+  Input,
+  Login,
+  PostCard,
+  Button,
+  Signup,
+  RTE,
+  Container,
+  PostForm,
+  AuthLayout,
+  Select,
+};

@@ -25,7 +25,7 @@ function Home() {
       setFilteredPosts(posts);
     } else {
       const filtered = posts.filter((post) =>
-        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       setFilteredPosts(filtered);
     }
@@ -38,28 +38,28 @@ function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-red-800 to-rose-300 text-white py-20">
+      <div className="bg-gradient-to-r from-red-800 to-rose-300 py-20 text-white">
         <Container>
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+            <h1 className="mb-4 text-5xl font-extrabold md:text-6xl">
               <span className="block">Unveil Your Ideas</span>
-              <span className="block mt-2 animate-pulse">Share Your Voice</span>
+              <span className="mt-2 block animate-pulse">Share Your Voice</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
+            <p className="mb-8 text-xl opacity-90 md:text-2xl">
               A sanctuary for thoughts, stories, and everything in between.
             </p>
 
             {/* Search Bar - White Background */}
-            <div className="max-w-3xl mx-auto relative bg-white rounded-full shadow-lg">
+            <div className="relative mx-auto max-w-3xl rounded-full bg-white shadow-lg">
               <input
                 type="text"
                 placeholder="Search for blogs..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full px-6 py-4 rounded-full text-gray-800 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                className="w-full rounded-full bg-white px-6 py-4 text-lg text-gray-800 focus:ring-2 focus:ring-teal-300 focus:outline-none"
               />
               <svg
-                className="w-6 h-6 absolute right-4 top-4 text-gray-500"
+                className="absolute top-4 right-4 h-6 w-6 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -78,29 +78,29 @@ function Home() {
       </div>
 
       {/* Blog Posts Section */}
-      <div className="w-full py-12 bg-rose-50">
+      <div className="w-full bg-rose-50 py-12">
         <Container>
           {/* Not Authenticated State */}
           {!authStatus && !loading && (
-            <div className="text-center py-16">
-              <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-100 to-rose-100 p-10 rounded-2xl shadow-lg">
-                <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-rose-500">
+            <div className="py-16 text-center">
+              <div className="mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-red-100 to-rose-100 p-10 shadow-lg">
+                <h2 className="mb-6 bg-gradient-to-r from-red-600 to-rose-500 bg-clip-text text-4xl font-bold text-transparent">
                   Join the BlogVault Community!
                 </h2>
-                <p className="text-xl text-gray-700 mb-8">
+                <p className="mb-8 text-xl text-gray-700">
                   Log in to discover amazing stories and connect with passionate
                   writers.
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <a
                     href="/login"
-                    className="inline-block bg-gradient-to-r from-red-500 to-rose-400 hover:from-red-600 hover:to-rose-500 text-white font-bold py-3 px-8 rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="inline-block transform rounded-full bg-gradient-to-r from-red-500 to-rose-400 px-8 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:from-red-600 hover:to-rose-500 hover:shadow-lg"
                   >
                     Log In
                   </a>
                   <a
                     href="/signup"
-                    className="inline-block bg-transparent border-2 border-red-500 text-red-500 hover:bg-red-50 font-bold py-3 px-8 rounded-full transform transition-all duration-300 hover:scale-105"
+                    className="inline-block transform rounded-full border-2 border-red-500 bg-transparent px-8 py-3 font-bold text-red-500 transition-all duration-300 hover:scale-105 hover:bg-red-50"
                   >
                     Create Account
                   </a>
@@ -113,17 +113,17 @@ function Home() {
           {authStatus &&
             filteredPosts.length === 0 &&
             searchTerm.trim() !== "" && (
-              <div className="text-center py-16">
-                <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
-                  <h2 className="text-3xl font-bold mb-4 text-gray-700">
+              <div className="py-16 text-center">
+                <div className="mx-auto max-w-2xl rounded-xl bg-gradient-to-r from-red-50 to-rose-50 p-8 shadow-md">
+                  <h2 className="mb-4 text-3xl font-bold text-gray-700">
                     No posts found matching "{searchTerm}"
                   </h2>
-                  <p className="text-lg text-gray-600 mb-6">
+                  <p className="mb-6 text-lg text-gray-600">
                     Try adjusting your search or explore other topics instead.
                   </p>
                   <button
                     onClick={() => setSearchTerm("")}
-                    className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-full transition-colors"
+                    className="rounded-full bg-red-500 px-6 py-2 font-medium text-white transition-colors hover:bg-red-600"
                   >
                     Clear Search
                   </button>
@@ -136,17 +136,17 @@ function Home() {
             posts.length === 0 &&
             searchTerm.trim() === "" &&
             !loading && (
-              <div className="text-center py-16">
-                <div className="max-w-2xl mx-auto bg-gradient-to-r from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
-                  <h2 className="text-3xl font-bold mb-4 text-gray-700">
+              <div className="py-16 text-center">
+                <div className="mx-auto max-w-2xl rounded-xl bg-gradient-to-r from-red-50 to-rose-50 p-8 shadow-md">
+                  <h2 className="mb-4 text-3xl font-bold text-gray-700">
                     No posts available yet
                   </h2>
-                  <p className="text-lg text-gray-600 mb-6">
+                  <p className="mb-6 text-lg text-gray-600">
                     Be the first to share your thoughts with the community!
                   </p>
                   <a
                     href="/add-post"
-                    className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-full transition-colors"
+                    className="rounded-full bg-red-500 px-6 py-2 font-medium text-white transition-colors hover:bg-red-600"
                   >
                     Create a Post
                   </a>
@@ -158,17 +158,17 @@ function Home() {
           {filteredPosts.length > 0 && (
             <>
               {/* Fancy section header */}
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold inline-block relative">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-rose-400">
+              <div className="mb-12 text-center">
+                <h2 className="relative inline-block text-3xl font-bold">
+                  <span className="bg-gradient-to-r from-red-500 to-rose-400 bg-clip-text text-transparent">
                     Explore Our Posts
                   </span>
-                  <div className="h-1 w-1/2 bg-gradient-to-r from-red-500 to-purple-600 absolute bottom-0 left-1/4 rounded-full"></div>
+                  <div className="absolute bottom-0 left-1/4 h-1 w-1/2 rounded-full bg-gradient-to-r from-red-500 to-purple-600"></div>
                 </h2>
               </div>
 
               {/* Posts grid with improved styling */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {filteredPosts.map((post) => (
                   <div
                     key={post.$id}
